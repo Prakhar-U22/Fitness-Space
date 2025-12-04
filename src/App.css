@@ -1,10 +1,19 @@
+/* Make the app use full width & height, no centering */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
 }
 
+/* Optional: basic page background */
+body {
+  padding-top: 60px;
+  margin: 0;
+  background: #f5f7fb;
+}
+
+/* (You can keep these if you still use the Vite logo somewhere) */
 .logo {
   height: 6em;
   padding: 1.5em;

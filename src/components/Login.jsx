@@ -1,63 +1,86 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { login } from '../utils/api'
+import { useState } from "react";
+import "./Login.css";
 
-export default function Login({ onLogin }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+export default function Login({ goToRegister }) {
 
-  const submit = async (e) => {
-    e.preventDefault()
-    setError(null)
-    if (!email || !password) return setError('Please fill email & password')
-    setLoading(true)
-    const res = await login(email, password)
-    setLoading(false)
-    if (res.error) {
-      setError(res.error || 'Login failed')
-      return
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      alert("Please fill all fields.");
+      return;
     }
-    // expected { token, user }
-    if (res.token && res.user) {
-      onLogin(res.user, res.token)
-    } else {
-      setError('Unexpected server response')
-    }
-  }
 
-  // quick demo accounts note: you can add demo credentials here or show a small hint
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.error || "Invalid credentials");
+        return;
+      }
+
+      alert("Login successful!");
+
+      // Optionally store token
+      localStorage.setItem("token", data.token);
+
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Try again.");
+    }
+  };
+
   return (
-    <div style={styles.page}>
-      <div style={styles.card}>
-        <h2 style={{marginBottom:10}}>Login</h2>
-        <form onSubmit={submit}>
-          <label style={styles.label}>Email</label>
-          <input style={styles.input} value={email} onChange={e=>setEmail(e.target.value)} type="email" />
-          <label style={styles.label}>Password</label>
-          <input style={styles.input} value={password} onChange={e=>setPassword(e.target.value)} type="password" />
-          {error && <div style={styles.error}>{error}</div>}
-          <button style={styles.btn} type="submit" disabled={loading}>{loading ? 'Signing in...' : 'Login'}</button>
+    <div className="login-wrapper">
+      <div className="login-card">
+        <h2 className="login-title">Welcome Back</h2>
+        <p className="login-subtitle">Login to continue your health journey</p>
+
+        <form onSubmit={handleLogin}>
+
+          <div className="login-field">
+            <label className="login-label">Email ID</label>
+            <input
+              type="email"
+              className="login-input"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="login-field">
+            <label className="login-label">Password</label>
+            <input
+              type="password"
+              className="login-input"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button className="login-btn" type="submit">
+            Login
+          </button>
         </form>
 
-        <div style={{marginTop:12}}>
-          <small>New patient? <Link to="/register">Register here</Link></small>
-        </div>
-
-        <div style={{marginTop:10}}>
-          <small>Doctor accounts are pre-created. Use the doctor credentials from README.</small>
+        <div className="switch-area">
+          New patient?{" "}
+          <span className="switch-link" onClick={goToRegister}>
+            Create an account
+          </span>
         </div>
       </div>
     </div>
-  )
-}
-
-const styles = {
-  page: { minHeight: '100vh', display:'flex', alignItems:'center', justifyContent:'center', background:'#f5f7fb' },
-  card: { width: 360, padding:20, background:'#fff', borderRadius:8, boxShadow:'0 4px 14px rgba(0,0,0,0.08)' },
-  label: { display:'block', fontSize:13, marginTop:10 },
-  input: { width:'100%', padding:'8px 10px', marginTop:6, borderRadius:6, border:'1px solid #ddd' },
-  btn: { width:'100%', marginTop:14, padding:10, borderRadius:6, background:'#2563eb', color:'#fff', border:'none' },
-  error: { marginTop:8, color:'#b00020' }
+  );
 }
