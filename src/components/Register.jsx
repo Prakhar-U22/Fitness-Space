@@ -11,38 +11,23 @@ export default function Register({ goBack }) {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!name || !email || !password || !age || !gender) {
-      alert("Please fill all fields.");
-      return;
-    }
-
-    // Prepare data ONLY for backend
-    const bodyData = {
-      username: name,     // backend expects "username"
-      email,
-      password
-    };
+    const body = { username: name, email, password };
 
     try {
       const res = await fetch("http://localhost:5000/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bodyData)
+        body: JSON.stringify(body),
       });
 
       const data = await res.json();
+      if (!res.ok) return alert(data.error || "Registration failed");
 
-      if (!res.ok) {
-        alert(data.error || "Registration failed");
-        return;
-      }
-
-      alert("Registered successfully!");
-      goBack();   // go back to login page after success
+      alert("Registration successful!");
+      goBack();
 
     } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Try again.");
+      alert("Error occurred");
     }
   };
 
@@ -50,10 +35,11 @@ export default function Register({ goBack }) {
     <div className="register-wrapper">
       <div className="register-card">
         <h2 className="register-title">Create Your Account</h2>
-        <p className="register-subtitle">Register as a patient to get started</p>
+        <p className="register-subtitle">
+          Register as a patient to continue
+        </p>
 
         <form onSubmit={handleRegister}>
-
           <div className="register-field">
             <label className="register-label">Full Name</label>
             <input
@@ -66,7 +52,7 @@ export default function Register({ goBack }) {
           </div>
 
           <div className="register-field">
-            <label className="register-label">Email ID</label>
+            <label className="register-label">Email</label>
             <input
               type="email"
               className="register-input"
@@ -81,19 +67,18 @@ export default function Register({ goBack }) {
             <input
               type="password"
               className="register-input"
-              placeholder="Create a password"
+              placeholder="Create password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          {/* Age & Gender just collected, not sent */}
           <div className="register-field">
             <label className="register-label">Age</label>
             <input
               type="number"
               className="register-input"
-              placeholder="Enter your age"
+              placeholder="Your age"
               value={age}
               onChange={(e) => setAge(e.target.value)}
             />
@@ -106,10 +91,10 @@ export default function Register({ goBack }) {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
-              <option value="">Select your gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
+              <option value="">Select gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
             </select>
           </div>
 

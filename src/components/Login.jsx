@@ -1,41 +1,30 @@
 import { useState } from "react";
 import "./Login.css";
 
-export default function Login({ goToRegister }) {
-
+export default function Login({ goToRegister, goToHome }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      alert("Please fill all fields.");
-      return;
-    }
-
     try {
       const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
-
-      if (!res.ok) {
-        alert(data.error || "Invalid credentials");
-        return;
-      }
+      if (!res.ok) return alert(data.error || "Invalid credentials");
 
       alert("Login successful!");
-
-      // Optionally store token
       localStorage.setItem("token", data.token);
+      goToHome();  // Redirect after login
 
     } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Try again.");
+      alert("Something went wrong");
+      console.log(err);
     }
   };
 
@@ -43,10 +32,9 @@ export default function Login({ goToRegister }) {
     <div className="login-wrapper">
       <div className="login-card">
         <h2 className="login-title">Welcome Back</h2>
-        <p className="login-subtitle">Login to continue your health journey</p>
+        <p className="login-subtitle">Login to continue your journey</p>
 
         <form onSubmit={handleLogin}>
-
           <div className="login-field">
             <label className="login-label">Email ID</label>
             <input
@@ -78,6 +66,12 @@ export default function Login({ goToRegister }) {
           New patient?{" "}
           <span className="switch-link" onClick={goToRegister}>
             Create an account
+          </span>
+        </div>
+
+        <div className="switch-area">
+          <span className="switch-link" onClick={goToHome}>
+            ← Back to Home
           </span>
         </div>
       </div>

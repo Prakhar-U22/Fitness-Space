@@ -1,0 +1,63 @@
+/* 🌟 TOP HEADER — reduced height by ~50% */
+.top-header {
+  width: 100%;
+  padding: 6px 2rem 12px; /* reduced from ~24px */
+  border-bottom: 1px solid #e5e7eb;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    90deg,
+    #e0f2fe 0%,
+    #bfdbfe 45%,
+    #93c5fd 100%
+  );
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Alignment */
+.top-header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem; /* reduced */
+}
+
+/* Logo box */
+.logo-box {
+  background-color: #4b5563;
+  padding: 5px 12px; /* reduced */
+  border-radius: 5px;
+}
+
+.logo-text {
+  color: white;
+  font-size: 1rem; /* reduced */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Title block */
+.title-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 🟦 Reduced title size */
+.site-title {
+  font-size: 1.8rem;   /* was 2.5rem */
+  font-weight: 800;
+  color: #1f2937;
+  margin: 0;
+  line-height: 1.15;   /* tighter spacing */
+}
+
+/* Subtitle */
+.site-tagline {
+  font-size: 0.8rem;
+  margin: 0;
+  margin-top: 0px;
+  color: #1d4ed8;
+  font-weight: 500;
+  line-height: 1.1;
+}
