@@ -1,0 +1,54 @@
+/* NAVBAR CONTAINER */
+.navbar {
+  /* width: 100%;   <-- remove this line OR keep it with box-sizing below */
+  box-sizing: border-box;   /* padding included in width */
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Home left | Login right */
+  padding: 0 1.5rem; /* small left/right padding */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;           /* ensure it ends exactly at right edge */
+  z-index: 1000;
+}
+
+/* BUTTON STYLES */
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+/* Home Button */
+.home-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.home-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Login Button */
+.login-btn {
+  background: transparent;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+}
+
+.login-btn:hover {
+  background: #e0ebff;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+}
