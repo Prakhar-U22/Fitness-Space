@@ -1,0 +1,282 @@
+/* Root color system for consistency and easy future theming */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-soft: #f9fafb;
+  --color-bg-softer: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-light: #d1d5db;
+
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+
+  --color-success: #16a34a;
+  --color-success-hover: #15803d;
+
+  --color-error-bg: #fee2e2;
+  --color-error-text: #b91c1c;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* -------------------------------------------- */
+/* Layout Containers */
+/* -------------------------------------------- */
+
+.page {
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* -------------------------------------------- */
+/* Typography */
+/* -------------------------------------------- */
+
+.user-subtitle {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.metricLabel,
+.metricUnit,
+.emptyText,
+.savingText {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.metricValue {
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* -------------------------------------------- */
+/* Cards */
+/* -------------------------------------------- */
+
+.card {
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* -------------------------------------------- */
+/* Progress Bar */
+/* -------------------------------------------- */
+
+.progressOuter {
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-softer);
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progressInner {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+/* -------------------------------------------- */
+/* Grids */
+/* -------------------------------------------- */
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.healthGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* -------------------------------------------- */
+/* Forms */
+/* -------------------------------------------- */
+
+.wellnessForm {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+}
+
+.wellnessRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.input {
+  width: 95%;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+/* -------------------------------------------- */
+/* Buttons */
+/* -------------------------------------------- */
+
+.logoutBtn {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  cursor: pointer;
+  color: #2563eb;
+  transition: background 0.2s ease;
+}
+
+.logoutBtn:hover {
+  background: var(--color-bg-soft);
+}
+
+.primaryBtn {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--color-success);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.primaryBtn:hover:not(:disabled) {
+  background: var(--color-success-hover);
+}
+
+.primaryBtn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.iconBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-soft);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: #2563eb;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.iconBtn:hover {
+  background: var(--color-bg-softer);
+  border-color: var(--color-primary);
+}
+
+/* -------------------------------------------- */
+/* Chips */
+/* -------------------------------------------- */
+
+.chipList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  background: #eef2ff;
+  border: 1px solid #e0e7ff;
+}
+
+/* -------------------------------------------- */
+/* Notifications */
+/* -------------------------------------------- */
+
+.error {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  font-size: 13px;
+}
+
+.savingText {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+}
+
+/* -------------------------------------------- */
+/* Utility spacing */
+/* -------------------------------------------- */
+
+.m-0 { margin: 0; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
