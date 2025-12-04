@@ -1,19 +1,20 @@
-/* Make the app use full width & height, no centering */
+/* REMOVE layout restrictions so navbar + content can use full width */
 #root {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100vh;
+  text-align: left; /* no forced centering */
 }
 
-/* Optional: basic page background */
+/* Make entire page background white */
 body {
-  padding-top: 60px;
+  background-color: #ffffff !important;
   margin: 0;
-  background: #f5f7fb;
+  padding: 0;
 }
 
-/* (You can keep these if you still use the Vite logo somewhere) */
+/* Keep original Vite logo styles (optional) */
 .logo {
   height: 6em;
   padding: 1.5em;

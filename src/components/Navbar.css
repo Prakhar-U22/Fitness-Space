@@ -1,23 +1,25 @@
-/* NAVBAR CONTAINER */
+/* NAVBAR WRAPPER */
 .navbar {
-  /* width: 100%;   <-- remove this line OR keep it with box-sizing below */
-  box-sizing: border-box;   /* padding included in width */
-  height: 60px;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Home left | Login right */
-  padding: 0 1.5rem; /* small left/right padding */
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;           /* ensure it ends exactly at right edge */
+  right: 0;
+
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 1.5rem;
+  box-sizing: border-box;
   z-index: 1000;
 }
 
-/* BUTTON STYLES */
-.btn {
+/* Button Base */
+.nav-btn {
   padding: 8px 16px;
   border-radius: 6px;
   font-size: 15px;
@@ -28,12 +30,12 @@
 
 /* Home Button */
 .home-btn {
-  background: #2563eb;
+  background-color: #2563eb;
   color: white;
 }
 
 .home-btn:hover {
-  background: #1d4ed8;
+  background-color: #1d4ed8;
 }
 
 /* Login Button */
@@ -47,8 +49,9 @@
   background: #e0ebff;
 }
 
-.left,
-.right {
+/* Flex containers */
+.nav-left,
+.nav-right {
   display: flex;
   align-items: center;
 }
