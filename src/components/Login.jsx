@@ -21,7 +21,7 @@ export default Login;
 import { useState } from "react";
 import "./Login.css";
 
-export default function Login({ goToRegister, goToHome }) {
+export default function Login({ goToRegister, goToHome, goToDashboard }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -40,7 +40,8 @@ export default function Login({ goToRegister, goToHome }) {
 
       alert("Login successful!");
       localStorage.setItem("token", data.token);
-      goToHome();  // Redirect after login
+      // goToHome();  // Redirect after login
+      goToDashboard();
 
     } catch (err) {
       alert("Something went wrong");

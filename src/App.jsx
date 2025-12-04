@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Navbar from "./components/Navbar"; 
+import Dashboard from "./components/Dashboard";
 import './App.css';
 >>>>>>> 82c21ef6c29b32bd443410e72c7c68225a9963dd
 
@@ -51,9 +52,14 @@ function App() {
 
       {page === "login" && (
         <Login 
-          goToRegister={() => setPage("register")}
-          goToHome={() => setPage("home")}
+            goToRegister={() => setPage("register")}
+            goToHome={() => setPage("home")}
+            goToDashboard={() => setPage("dashboard")}
         />
+        
+      )}
+      {page === "dashboard" && (
+        <Dashboard onLogout={() => setPage("home")} />
       )}
 
       {page === "register" && (
@@ -64,4 +70,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
