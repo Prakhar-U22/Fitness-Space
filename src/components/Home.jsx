@@ -1,4 +1,5 @@
 import React from "react";
+import TopHeader from "./TopHeader";
 import Navbar from "./Navbar";
 import Body from "./Body";
 import "./Home.css";
@@ -6,11 +7,11 @@ import "./Home.css";
 const Home = () => {
   return (
     <div className="home-wrapper">
-      <Navbar />
-      
-      {/* Empty main area for now */}
+      <TopHeader />   {/* brand banner */}
+      <Navbar />      {/* main navigation */}
+
       <main className="home-main">
-        <Body/>  {/* You can add your sections here later */}
+        <Body />
       </main>
     </div>
   );
