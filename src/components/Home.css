@@ -1,0 +1,12 @@
+.home-wrapper {
+  background-color: #ffffff;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.home-main {
+  background-color: #f5f7fb;
+  min-height: calc(100vh - 120px); /* just to keep some height */
+  padding-top: 24px;
+}
+

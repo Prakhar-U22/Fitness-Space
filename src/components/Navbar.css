@@ -1,54 +1,61 @@
-/* NAVBAR CONTAINER */
+/* NAVBAR WRAPPER */
 .navbar {
-  /* width: 100%;   <-- remove this line OR keep it with box-sizing below */
-  box-sizing: border-box;   /* padding included in width */
-  height: 60px;
+  height: 56px;
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
+
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between; /* Home left | Login right */
-  padding: 0 1.5rem; /* small left/right padding */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;           /* ensure it ends exactly at right edge */
-  z-index: 1000;
+
+  padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
-/* BUTTON STYLES */
-.btn {
-  padding: 8px 16px;
+/* Button Base */
+.nav-btn {
+  padding: 8px 14px;
   border-radius: 6px;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   border: none;
+  background: transparent;
+  color: #374151;
+  transition: 0.15s ease;
 }
 
-/* Home Button */
+/* Hover for normal nav links */
+.nav-link:hover {
+  background-color: #e5e7eb;
+}
+
+/* Home Button (main highlighted) */
 .home-btn {
-  background: #2563eb;
+  background-color: #2563eb;
   color: white;
+  margin-right: 6px;
 }
 
 .home-btn:hover {
-  background: #1d4ed8;
+  background-color: #1d4ed8;
 }
 
-/* Login Button */
+/* Right-side Login Button */
 .login-btn {
-  background: transparent;
   border: 1px solid #2563eb;
   color: #2563eb;
+  background: white;
 }
 
 .login-btn:hover {
-  background: #e0ebff;
+  background-color: #e0ebff;
 }
 
-.left,
-.right {
+/* Layout containers */
+.nav-left,
+.nav-right {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
