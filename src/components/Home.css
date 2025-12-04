@@ -1,0 +1,9 @@
+.home-wrapper {
+  min-height: 100vh;
+  background-color: #f5f7fb;
+}
+
+/* keep space under fixed navbar so content won't hide behind it */
+.home-main {
+  padding-top: 60px; /* same height as navbar */
+}
