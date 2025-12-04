@@ -1,0 +1,121 @@
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 16px;
+}
+
+/* Clean glass card */
+.register-card {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 38px 34px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  animation: fadeIn 0.35s ease-out;
+}
+
+.register-title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.register-subtitle {
+  font-size: 15px;
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.register-field {
+  margin-bottom: 20px;
+}
+
+.register-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #333;
+}
+
+.register-input {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  background: #ffffff !important;
+  font-size: 15px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Fix autofill black bg */
+input:-webkit-autofill, select:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+.register-input:focus {
+  border-color: #10a37f;
+  box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.22);
+  outline: none;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 13px;
+  background: #10a37f;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.register-btn:hover {
+  background: #0c8564;
+  transform: translateY(-1px);
+}
+
+.back-area {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.back-link {
+  color: #10a37f;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Fix input text visibility issue */
+input,
+select {
+  color: #000 !important;        /* text is black */
+  background-color: #fff !important;
+}
+
+/* Fix placeholder not showing */
+input::placeholder,
+select::placeholder {
+  color: #777 !important;
+}
+
+/* Fix Chrome autofill bug (overriding white shadow + making text visible) */
+input:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
